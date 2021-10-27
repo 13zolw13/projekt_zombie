@@ -47,7 +47,7 @@ Sorting item in inventory;
 Sorting zombies by value of loot, name, creation date.
 Changeing schema, creating connection between zombies and itemslike Item: type: mongoose.Types.ObjectId > with , to  populate whit current price, when needed. 
 adding length restriction of max items in model.
-move to cache items.js when getting current rates.  
+move to cache in items.js when getting current rates.  
 hide math staff
 ADD more validation
 ADd more error handling functions
