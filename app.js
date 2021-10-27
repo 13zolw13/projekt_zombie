@@ -43,7 +43,7 @@ const start = async () => {
         app.listen(port,
             console.log(`Listening on port ${port}`));
 
-
+        getExchangeRates();
         const currentPrices = await CurrentPrice.find({});
         if (currentPrices[0]) {
             let timestamp = currentPrices[0].UpdatedTimestamp;

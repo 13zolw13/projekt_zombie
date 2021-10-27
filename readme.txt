@@ -56,6 +56,8 @@ hide math staff
 ADD more validation
 ADD more error handling functions
 ADD db for storing archive of errors.
+Data from NBP in case of no data( like server down for long time) eg on weekend should be dawmloady from other working day.  
+
 
 
 
