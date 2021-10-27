@@ -1,0 +1,57 @@
+User stories:
+
+I want to display details about selected zombie (name and creation date);
+I want to display items that this zombie has;
+I want to see total value of zombie’s items in 3 currencies, PLN/EU/USD;
+I want to add and remove items from the zombie;
+I want to see a list of zombies (create/update/remove them also);
+
+
+Guidelines:
+
+The zombie can have a maximum of 5 items.
+We use an external item exchange for our zombie (we pay for every request), the prices of items on the exchange are updated daily at 00:00 UTC and are in Polish zlotys. https://zombie-items-api.herokuapp.com/api/items
+We use the NBP API to download daily exchange rates http://api.nbp.pl/api/exchangerates/tables/C/today/
+Please take the RESTful approach or GraphQL - whatever you feel more comfortable with.
+Nice to have: app placed on the hosting (heroku/zeit or anything else) or dockerized.
+Do as much as you are able to (zombies CRUD and tests are a must) - in case of lack of time, please create a .txt file and describe what you were planning to do. Please mention the tools that you would use and as many implementation details as you can.
+You can also include any concerns and questions that arose during the process and you would like to ask the PM. Or maybe you have any ideas on how to improve the app? Whatever comes to your mind - please put it also in the txt file and show us your way of thinking.
+
+
+What’s important?
+
+clean code,
+test coverage,
+optimization,
+good documentation.
+
+
+TO RUN API
+To run api on local machine, create dotenv file, with mongoose uri. MONGO_URI =mongodb://localhost:27017/zombies .
+
+ENDPOINTS
+get  /api/v1/zombies -> List of all zombies from db.
+post  /api/v1/zombies -> Creating zombie, require name, then saveing to DB
+patch  /api/v1/zombies/:id -> Editing zombie,  requiere name input. 
+delete /api/v1/zombies/:id -> Deleting zombie
+
+get /api/v1/zombies/:id/items -> Zombie inventory. List of all equipment, with sum value of inventory.   
+patch /api/v1/zombies/:id/items/:itemId -> Adding item to inventory, its need itemId and name, checking if it is posible to add more items. 
+delete /api/v1/zombies/:id/items/:itemId -> removeing item from inventory, deleting item from inventory. Its needs itemID;
+
+
+
+//TODOs
+Authentication and autorization jwt/passport
+Sorting item in inventory;
+Sorting zombies by value of loot, name, creation date.
+Changeing schema, creating connection between zombies and itemslike Item: type: mongoose.Types.ObjectId > with , to  populate whit current price, when needed. 
+adding length restriction of max items in model.
+move to cache items.js when getting current rates.  
+hide math staff
+ADD more validation
+ADd more error handling functions
+
+
+I did, unit test in Moca. Manual test in Postman.  
+
