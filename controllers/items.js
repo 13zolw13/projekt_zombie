@@ -15,8 +15,10 @@ const inventoryZombie = async (req, res) => {
     let inventoryPrice = 0;
     const zombie = await Zombie.findById(zombieId).select(" name , items ");
     console.log(zombie)
-    const exchanegrate = await exchangeRates.find({});
-if (!zombie) throw new Error('This zombie dosen`t exist');
+    const exchanegrate = await exchangeRates.find({}); // TODO I must find nice way to store this data in memory;
+
+    if (!zombie) throw new Error('This zombie dosen`t exist');
+
     if (zombie.items.length > 0) {
         for (let item of zombie.items) {
             let price = await CurrentPrice.findOne({
@@ -27,11 +29,11 @@ if (!zombie) throw new Error('This zombie dosen`t exist');
         }
 
 
-inventoryPrice = currencyExchange(arrayOfCurrentPrices, exchanegrate)
-       
+        inventoryPrice = currencyExchange(arrayOfCurrentPrices, exchanegrate)
+
     }
-    
-    res.json({
+
+    res.status(200).json({
         zombie,
         inventoryPrice
     })
@@ -48,7 +50,7 @@ const addItem = async (req, res) => {
         itemId
     } = req.params;
 
-    // TODO  ADD VALIDATION ITEM FROM THE LIST;
+    // TODO  ADD VALIDATION ITEMs FROM THE LIST;
     const zombie = await Zombie.findById(zombieId);
     if (zombie.items.length > 5) {
         throw Error('To many items in inventory');
@@ -60,7 +62,7 @@ const addItem = async (req, res) => {
     });
     zombie.save()
     console.log(zombie);
-    res.json({
+    res.status(201).json({
         zombie,
         inventory: zombie.items.length
     })
@@ -99,8 +101,9 @@ const deleteItem = async (req, res) => {
 
     // console.log(zombie)
 
-    res.json({
+    res.status(200).json({
         zombie: updatedZombie
+
     });
 
 }

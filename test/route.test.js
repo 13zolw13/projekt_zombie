@@ -91,20 +91,22 @@ describe('/GET details', () => {
 })
 
 
-  describe('/DELETE/:id book', () => {
-      it('it should DELETE a book given the id', (done) => {
-          let zombie = new Zombie({ name: "Kramer" });
-          zombie.save((err, zombie) => {
-                chai.request(server)
+describe('/DELETE/:id book', () => {
+    it('it should DELETE a book given the id', (done) => {
+        let zombie = new Zombie({
+            name: "Kramer"
+        });
+        zombie.save((err, zombie) => {
+            chai.request(server)
                 .delete('/api/v1/zombies/' + zombie._id)
                 .end((err, res) => {
-                      res.should.have.status(200);
-    
-                  done();
+                    res.should.have.status(200);
+
+                    done();
                 });
-          });
-      });
- });    
+        });
+    });
+});
 
 describe('/GET inventory', () => {
     it('wrong id ', (done) => {

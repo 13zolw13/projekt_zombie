@@ -14,12 +14,12 @@ const scheduleJobs = async function () {
     const job = schedule.scheduleJob(rule, async function () {
 
         getPrice();
-        // console.log('A new day has begun in the UTC timezone!');
+
     });
 
 
     const jobNBP = schedule.scheduleJob('46 7 * * 1-5', async function () {
-        // console.log('The answer to life, the universe, and everything!');
+
         getExchangeRates();
 
     });
