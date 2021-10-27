@@ -34,8 +34,8 @@ const createZombie = async (req, res) => {
     // const zombie = { name: 'Zombie1', creationDate: 'tomorow' };
 
     res.status(201).json({
-        zombie
-    });
+        zombie,
+   msg:'Success, zombie created!' });
 }
 
 
@@ -76,7 +76,7 @@ const deleteZombie = async (req, res) => {
     });
     if (!zombie) throw new Error('This zombie dosen`t exist');
 
-    res.status(200).json(zombie);
+    res.status(200).json({zombie, msg:'Success, zombie deleted!'});
 }
 
 const detailZobmie = async (req, res) => {

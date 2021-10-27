@@ -104,7 +104,7 @@ const deleteItem = async (req, res) => {
     res.status(200).json({
         zombie: updatedZombie
 
-    });
+    , msg:'Succes, item deleted!'});
 
 }
 

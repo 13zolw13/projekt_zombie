@@ -25,16 +25,20 @@ test coverage,
 optimization,
 good documentation.
 
+===================================================================================================================== 
+I used node.js, express, mongodb, to create this API. I did, unit tests in Moca. Manual tests in Postman.  
 
 TO RUN API
-To run api on local machine, create dotenv file, with mongoose uri. MONGO_URI =mongodb://localhost:27017/zombies .
+To run api on local machine, create dotenv file, with mongoose uri =>> MONGO_URI =mongodb://localhost:27017/zombies .
 
 ENDPOINTS
+Zombies
 get  /api/v1/zombies -> List of all zombies from db.
 post  /api/v1/zombies -> Creating zombie, require name, then saveing to DB
 patch  /api/v1/zombies/:id -> Editing zombie,  requiere name input. 
 delete /api/v1/zombies/:id -> Deleting zombie
 
+Zombie’s inventory
 get /api/v1/zombies/:id/items -> Zombie inventory. List of all equipment, with sum value of inventory.   
 patch /api/v1/zombies/:id/items/:itemId -> Adding item to inventory, its need itemId and name, checking if it is posible to add more items. 
 delete /api/v1/zombies/:id/items/:itemId -> removeing item from inventory, deleting item from inventory. Its needs itemID;
@@ -50,8 +54,8 @@ adding length restriction of max items in model.
 move to cache in items.js when getting current rates.  
 hide math staff
 ADD more validation
-ADd more error handling functions
+ADD more error handling functions
+ADD db for storing archive of errors.
 
 
-I did, unit test in Moca. Manual test in Postman.  
 
