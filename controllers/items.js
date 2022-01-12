@@ -20,6 +20,8 @@ const inventoryZombie = async (req, res) => {
     if (!zombie) throw new Error('This zombie dosen`t exist');
 
     if (zombie.items.length > 0) {
+            const exchanegrate = await exchangeRates.find({}); // TODO I must find nice way to store this data in memory;
+
         for (let item of zombie.items) {
             let price = await CurrentPrice.findOne({
                 id: item.id

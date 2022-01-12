@@ -19,24 +19,23 @@ const createZombie = async (req, res) => {
         return res.status(400).json({
             errors: errors.array()
         });
-    }
-    const {
-        name
-    } = req.body;
-    if (!name) {
-        throw new Error('No data');
-        next();
-    }
+    } else {
+        const {
+            name
+        } = req.body;
+       
+        
+            const zombie = await Zombie.create({
+                name: name
+            });
+            // const zombie = { name: 'Zombie1', creationDate: 'tomorow' };
 
-    const zombie = await Zombie.create({
-        name: name
-    });
-    // const zombie = { name: 'Zombie1', creationDate: 'tomorow' };
-
-    res.status(201).json({
-        zombie,
-   msg:'Success, zombie created!' });
-}
+       return     res.status(201).json({
+                zombie,
+                msg: 'Success, zombie created!'
+            });
+        }
+    }
 
 
 const modifyZombie = async (req, res) => {
