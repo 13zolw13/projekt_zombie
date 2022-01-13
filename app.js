@@ -1,12 +1,13 @@
 require('dotenv').config();
 const express = require('express');
 const app = express();
-
+ './utilities/dateCheck'
 
 const connectDB = require('./db/connect');
 app.use(express.static('./public'));
 app.use(express.json());
 
+const {dateCheck}= require('./utilities/dateCheck')
 const CurrentPrice = require('./model/currentPrice');
 
 const zombieRoutes = require('./routes/main');
@@ -23,6 +24,7 @@ const port = process.env.PORT || 3000;
 
 app.use('/api/v1/', zombieRoutes);
 
+// res.locals.exchangerates
 
 
 app.all('*', async (req, res, next) => {
@@ -46,17 +48,22 @@ const start = async () => {
         getExchangeRates();
         const currentPrices = await CurrentPrice.find({});
         if (currentPrices[0]) {
-            let timestamp = currentPrices[0].UpdatedTimestamp;
-            const today1 = new Date(Date.now());
+            // let timestamp = currentPrices[0].UpdatedTimestamp;
+            // const today1 = new Date(Date.now());
 
-            const today = today1.getDate();
+            // const today = today1.getDate();
 
-            const date = new Date(timestamp);
-            const updateDate = date.getDate();
+            // const date = new Date(timestamp);
+            // const updateDate = date.getDate();
 
-            if (updateDate !== today) {
-                getPrice();
+            // if (updateDate !== today) {
+            //     getPrice();
+            // }
+            if (    dateCheck
+(currentPrices[0].UpdatedTimestamp)) {
+                 getPrice();
             }
+
         }
 
 

@@ -15,7 +15,7 @@ const inventoryZombie = async (req, res) => {
     let inventoryPrice = 0;
     const zombie = await Zombie.findById(zombieId).select(" name , items ");
     console.log(zombie)
-    const exchanegrate = await exchangeRates.find({}); // TODO I must find nice way to store this data in memory;
+    // const exchanegrate = await exchangeRates.find({}); // TODO I must find nice way to store this data in memory;
 
     if (!zombie) throw new Error('This zombie dosen`t exist');
 
